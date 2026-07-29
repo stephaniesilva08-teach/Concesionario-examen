@@ -12,32 +12,32 @@ La entidad Mantenimiento permite registrar servicios realizados a los vehículos
 El diseño general cumple con las formas normales básicas, evitando redundancia de datos y asegurando consistencia en las relaciones entre entidades.
 La base de datos implementa diversas restricciones para garantizar la integridad de los datos:
 
-    • Claves primarias (PK): Cada tabla posee una clave primaria única que identifica cada registro.
+- Claves primarias (PK): Cada tabla posee una clave primaria única que identifica cada registro.
     
-    • Claves foráneas (FK): Se utilizan para mantener la integridad referencial entre las tablas, asegurando que las relaciones sean válidas.
+- Claves foráneas (FK): Se utilizan para mantener la integridad referencial entre las tablas, asegurando que las relaciones sean válidas.
     
-    • Restricción de unicidad: El atributo VIN en la tabla Vehículo es único, evitando duplicidad de vehículos en el sistema. 
+- Restricción de unicidad: El atributo VIN en la tabla Vehículo es único, evitando duplicidad de vehículos en el sistema. 
     
-    • Restricciones de dominio: Se definen valores válidos para atributos como método de pago, tipo de servicio y estado del vehículo.
+- Restricciones de dominio: Se definen valores válidos para atributos como método de pago, tipo de servicio y estado del vehículo.
     
-    • Disponibilidad del vehículo: Cuando un vehículo es vendido, su atributo “disponible” debe actualizarse automáticamente a “no disponible”.
+- Disponibilidad del vehículo: Cuando un vehículo es vendido, su atributo “disponible” debe actualizarse automáticamente a “no disponible”.
     
-    • Integridad referencial: No se puede registrar una venta sin un cliente o vendedor válido.
+- Integridad referencial: No se puede registrar una venta sin un cliente o vendedor válido.
     
-    • Relación opcional: En la entidad Mantenimiento, el cliente puede ser nulo, permitiendo registrar servicios antes de la venta del vehículo.
+- Relación opcional: En la entidad Mantenimiento, el cliente puede ser nulo, permitiendo registrar servicios antes de la venta del vehículo.
     
 
 El modelo UML establece las siguientes relaciones entre entidades:
 
-    • Cliente a Venta: Relación uno a muchos (1:N), ya que un cliente puede realizar múltiples compras, pero cada venta pertenece a un solo cliente.
+- Cliente a Venta: Relación uno a muchos (1:N), ya que un cliente puede realizar múltiples compras, pero cada venta pertenece a un solo cliente.
     
-    • Vendedor a Venta: Relación uno a muchos (1:N), debido a que un vendedor puede gestionar múltiples ventas.
+- Vendedor a Venta: Relación uno a muchos (1:N), debido a que un vendedor puede gestionar múltiples ventas.
     
-    • Venta a Vehículo: Relación muchos a muchos (N:M), resuelta mediante la tabla intermedia VentaVehiculo, ya que una venta puede incluir varios vehículos y un vehículo podría estar asociado a muchas ventas.
+-  Venta a Vehículo: Relación muchos a muchos (N:M), resuelta mediante la tabla intermedia VentaVehiculo, ya que una venta puede incluir varios vehículos y un vehículo podría estar asociado a muchas ventas.
     
-    • Vehículo a Mantenimiento: Relación uno a muchos (1:N), permitiendo que un vehículo tenga múltiples registros de mantenimiento.
+-  vehículo a Mantenimiento: Relación uno a muchos (1:N), permitiendo que un vehículo tenga múltiples registros de mantenimiento.
     
-    • Cliente a Mantenimiento: Relación uno a muchos (1:N) opcional, ya que un cliente puede solicitar múltiples servicios, pero no todos los mantenimientos requieren un cliente asociado.
+-  cliente a Mantenimiento: Relación uno a muchos (1:N) opcional, ya que un cliente puede solicitar múltiples servicios, pero no todos los mantenimientos requieren un cliente asociado.
     
 
 Estas relaciones permiten representar de manera clara y estructurada la lógica del negocio del concesionario, facilitando tanto el almacenamiento como la consulta eficiente de la información
